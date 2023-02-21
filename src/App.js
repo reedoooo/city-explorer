@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const ACCESS_TOKEN = process.env.REACT_APP_LOCATIONKEY;
 
+
 class App extends React.Component {
   constructor() {
     super();
