@@ -7,7 +7,11 @@ import axios from 'axios';
 import { Container, Modal, Form, Button } from 'react-bootstrap';
 
 const LOCATION_API_KEY = process.env.REACT_APP_LOCATION_KEY;
+// const HOST_URL = process.env.REACT_APP_HOST;
+// const REACT_APP_SERVER = process.env.REACT_APP_HOST.concat(' ', process.env.PORT)
+const REACT_APP_SERVER = process.env.REACT_APP_HOST
 
+console.log(REACT_APP_SERVER);
 // const WEATHER_API_KEY = process.env.REACT_APP_WEATHERKEY;
 // const MOVIE_API_KEY = process.env.REACT_APP_MOVIEKEY;
 
@@ -58,7 +62,7 @@ class App extends React.Component {
     handleWeatherSearch = async (e) => {
 
         try {
-            let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.locationResults}`
+            let weatherUrl = `${REACT_APP_SERVER}/weather?searchQuery=${this.state.locationResults}`
             let response = await axios.get(weatherUrl)
             this.setState({
                 weatherResults: response.data
@@ -75,7 +79,7 @@ class App extends React.Component {
     handleMovieSearch = async (e) => {
 
         try {
-            let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.locationResults}`;
+            let moviesUrl = `${REACT_APP_SERVER}/movies?searchQuery=${this.state.locationResults}`;
             let response = await axios.get(moviesUrl)
             this.setState({
                 movieResults: response.data

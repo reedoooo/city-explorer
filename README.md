@@ -39,7 +39,6 @@ Finish time: 10:43pm
 
 Actual time needed to complete: 4 hours maybe to do the project but I worked on it all day. Maybe 12-14 hours just toying around with different thing or trying to fix bugs on my own while getting ahead on the project.
 
-
 Estimate of time needed to complete: 3h
 
 Start time: 1:50pm
@@ -47,4 +46,3 @@ Start time: 1:50pm
 Finish time: 5:10
 
 Actual time needed to complete: 3h 20m
-
