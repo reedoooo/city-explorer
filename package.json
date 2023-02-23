@@ -12,7 +12,6 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.34.0",
     "express": "^4.18.2",
-    "locationiq": "^0.0.3",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -22,8 +21,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "build": "react-scripts build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
