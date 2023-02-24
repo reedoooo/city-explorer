@@ -5,8 +5,7 @@ import Movies from "./Movies";
 import axios from "axios";
 import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
-import { Container, Modal, Form, Button } from "react-bootstrap";
-
+import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 
 class Main extends React.Component {
@@ -120,7 +119,7 @@ class Main extends React.Component {
                       onInput={this.handleSearchInput}
                     />
                   </Form.Group>
-                  <Button
+                  <MDBBtn
                     onClick={this.displayLocation}
                     className="mainButton"
                     style={{
@@ -129,7 +128,7 @@ class Main extends React.Component {
                     }}
                   >
                     Explore!
-                  </Button>
+                  </MDBBtn>
                 </Form>
               </div>
             </MDBCardBody>
