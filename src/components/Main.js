@@ -3,19 +3,15 @@ import Map from "./Map";
 import Weather from "./Weather";
 import Movies from "./Movies";
 import axios from 'axios';
-// import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Container, Modal, Form, Button } from 'react-bootstrap';
 
 const LOCATION_API_KEY = process.env.REACT_APP_LOCATION_KEY;
-// const HOST_URL = process.env.REACT_APP_HOST;
-// const REACT_APP_SERVER = process.env.REACT_APP_HOST.concat(' ', process.env.PORT)
-const APP_SERVER = process.env.REACT_APP_SERVER
+
+const APP_SERVER = process.env.REACT_APP_SERVER;
 
 console.log(APP_SERVER);
-// const WEATHER_API_KEY = process.env.REACT_APP_WEATHERKEY;
-// const MOVIE_API_KEY = process.env.REACT_APP_MOVIEKEY;
 
-class App extends React.Component {
+class Main extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -160,58 +156,8 @@ class App extends React.Component {
                     </Modal.Body>
                 </Modal>
             </main>
-            // <div className="App">
-            //   <Navbar bg="light" expand="lg">
-            //     <Container>
-            //       <Navbar.Brand href="#">City Explorer</Navbar.Brand>
-            //       <Navbar.Toggle aria-controls="navbar-nav" />
-            //       <Navbar.Collapse id="navbar-nav">
-            //         <Form className="d-flex mx-auto">
-            //           <FormControl type="search" placeholder="Enter a city" aria-label="Search" className="mr-2 search-input" onChange={this.handleInput} />
-            //           <Button variant="outline-primary" className="explore-btn" onClick={this.handleSearch}>Explore</Button>
-            //         </Form>
-            //       </Navbar.Collapse>
-            //     </Container>
-            //   </Navbar>
-            //   <Container className="my-5">
-            //     {condition
-            //       ? <BrowserRouter>
-            //         <Nav variant="pills" defaultActiveKey="/maps" className="mb-4">
-            //           <Nav.Item>
-            //             <Nav.Link as={Link} to="/maps">Maps</Nav.Link>
-            //           </Nav.Item>
-            //           <Nav.Item>
-            //             <Nav.Link as={Link} to="/weather">Weather</Nav.Link>
-            //           </Nav.Item>
-            //         </Nav>
-            //         <Routes>
-            //           <Route path='/maps' element={
-            //             <div className="city-container">
-            //               {this.state.locationResults.map(city => (
-            //                 <div key={city.place_id} className="city-details">
-            //                   <h2>{city.display_name}</h2>
-            //                   <Image
-
-            //                     src={`https://maps.locationiq.com/v3/staticmap?key=${LOCATION_API_KEY}&center=${city.lat},${city.lon}&zoom=10`}
-            //                     alt={city.display_name} />
-            //                 </div>
-            //               ))}
-            //             </div>
-            //           } />
-            //           <Route path='/weather' element={<h2>Weather Component goes here</h2>} />
-            //         </Routes>
-            //       </BrowserRouter>
-            //       : <h2 className="no-city">Please search for a city</h2>
-            //     }
-            //   </Container>
-            //   {this.state.error
-            //     ? <Alert variant="danger" onClose={() => this.setState({ error: null })} dismissible>
-            //       <p>Something went wrong: {this.state.error.message}</p>
-            //     </Alert>
-            //     : null}
-            // </div>
-        );
+        )
     }
 }
 
-export default App;
+export default Main
