@@ -3,7 +3,11 @@ import Map from "./Map";
 import Weather from "./Weather";
 import Movies from "./Movies";
 import axios from "axios";
+import { MDBContainer } from "mdb-react-ui-kit";
+import { MDBBtn } from "mdb-react-ui-kit";
 import { Container, Modal, Form, Button } from "react-bootstrap";
+
+import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 
 class Main extends React.Component {
   constructor() {
@@ -13,9 +17,9 @@ class Main extends React.Component {
       showModal: false,
       searchInput: "",
       location: {},
-      locationResults: '',
-      weatherResults: '',
-      movieResults: '',
+      locationResults: [],
+      weatherResults: [],
+      movieResults: [],
       error: null,
     };
   }
@@ -103,37 +107,63 @@ class Main extends React.Component {
     console.log(this.state);
     return (
       <main>
-        <Container>
-          <Form className="mainForm" onSubmit={this.displayLocation}>
-            <Form.Group>
-              <Form.Label>City</Form.Label>
-              <Form.Control type="text" onInput={this.handleSearchInput} />
-            </Form.Group>
-            <Button onClick={this.displayLocation} className="mainButton">
-              Explore!
-            </Button>
-          </Form>
-        </Container>
-        {this.state.displayInfo && (
-          <>
-            <h2>{this.state.location.display_name}</h2>
-            <p>Lat: {this.state.location.lat}</p>
-            <p>Lon: {this.state.location.lon}</p>
-            <Map lat={this.state.location.lat} lon={this.state.location.lon} />
+        <MDBContainer>
+          <MDBCard>
+            <MDBCardBody>
+              <div className="p-5 text-center bg-light">
+                <h1 className="mb-3">City Explorer</h1>
+                <Form className="mainForm" onSubmit={this.displayLocation}>
+                  <Form.Group>
+                    <Form.Label>City</Form.Label>
+                    <Form.Control
+                      type="text"
+                      onInput={this.handleSearchInput}
+                    />
+                  </Form.Group>
+                  <Button
+                    onClick={this.displayLocation}
+                    className="mainButton"
+                    style={{
+                      background:
+                        "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
+                    }}
+                  >
+                    Explore!
+                  </Button>
+                </Form>
+              </div>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBContainer>
+        <MDBContainer>
+          <MDBCard>
+            <MDBCardBody>
+              {this.state.displayInfo && (
+                <>
+                  <h2>{this.state.location.display_name}</h2>
+                  <p>Lat: {this.state.location.lat}</p>
+                  <p>Lon: {this.state.location.lon}</p>
+                  <Map
+                    lat={this.state.location.lat}
+                    lon={this.state.location.lon}
+                  />
 
-            <div>
-              {this.state.weatherResults.length > 0 && (
-                <Weather weatherResults={this.state.weatherResults} />
-              )}
-            </div>
+                  <div>
+                    {this.state.weatherResults.length > 0 && (
+                      <Weather weatherResults={this.state.weatherResults} />
+                    )}
+                  </div>
 
-            <div>
-              {this.state.movieResults.length > 0 && (
-                <Movies movieResults={this.state.movieResults} />
+                  <div>
+                    {this.state.movieResults.length > 0 && (
+                      <Movies movieResults={this.state.movieResults} />
+                    )}
+                  </div>
+                </>
               )}
-            </div>
-          </>
-        )}
+            </MDBCardBody>
+          </MDBCard>
+        </MDBContainer>
         <Modal show={this.state.showModal} onHide={this.closeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Error</Modal.Title>
