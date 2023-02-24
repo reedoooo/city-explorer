@@ -13,9 +13,9 @@ class Main extends React.Component {
       showModal: false,
       searchInput: "",
       location: {},
-      locationResults: [],
-      weatherResults: [],
-      movieResults: [],
+      locationResults: '',
+      weatherResults: '',
+      movieResults: '',
       error: null,
     };
   }
