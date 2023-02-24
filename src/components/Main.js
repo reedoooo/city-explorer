@@ -9,17 +9,13 @@ import { Container, Modal, Form, Button } from "react-bootstrap";
 
 const LOCATION_API_KEY = process.env.REACT_APP_LOCATION_KEY;
 
-const APP_SERVER = process.env.REACT_APP_SERVER;
-
-console.log(APP_SERVER);
-
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
       displayInfo: false,
       showModal: false,
-      searchInput:'',
+      searchInput: "",
       location: {},
       locationResults: [],
       weatherResults: [],
@@ -38,7 +34,7 @@ class Main extends React.Component {
     );
   };
 
-  handleLocationSearch = async() => {
+  handleLocationSearch = async () => {
     try {
       let request = {
         locationUrl: `https://us1.locationiq.com/v1/search?key=${LOCATION_API_KEY}&q=${this.state.searchInput}&format=json`,
@@ -58,7 +54,7 @@ class Main extends React.Component {
 
   handleWeatherSearch = async () => {
     try {
-      let weatherUrl = `${APP_SERVER}/weather?searchQuery=${this.state.locationResults}`;
+      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.locationResults}`;
       let response = await axios.get(weatherUrl);
       this.setState({
         weatherResults: response.data,
@@ -72,7 +68,7 @@ class Main extends React.Component {
 
   handleMovieSearch = async () => {
     try {
-      let moviesUrl = `${APP_SERVER}/movies?searchQuery=${this.state.locationResults}`;
+      let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.locationResults}`;
       let response = await axios.get(moviesUrl);
       this.setState({
         movieResults: response.data,
