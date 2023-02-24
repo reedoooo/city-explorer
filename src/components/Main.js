@@ -1,13 +1,9 @@
-"use strict";
-
 import React from "react";
 import Map from "./Map";
 import Weather from "./Weather";
 import Movies from "./Movies";
 import axios from "axios";
 import { Container, Modal, Form, Button } from "react-bootstrap";
-
-const LOCATION_API_KEY = process.env.REACT_APP_LOCATION_KEY;
 
 class Main extends React.Component {
   constructor() {
@@ -37,7 +33,7 @@ class Main extends React.Component {
   handleLocationSearch = async () => {
     try {
       let request = {
-        locationUrl: `https://us1.locationiq.com/v1/search?key=${LOCATION_API_KEY}&q=${this.state.searchInput}&format=json`,
+        locationUrl: `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`,
         method: "GET",
       };
 
