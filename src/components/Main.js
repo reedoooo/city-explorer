@@ -7,11 +7,13 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import { MDBModal } from "mdb-react-ui-kit/dist";
 
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
+      haveSearched: false,
       displayInfo: false,
       showModal: false,
       error: null,
@@ -47,8 +49,8 @@ class Main extends React.Component {
       this.setState({
         locationResults: response.data,
         location_name: response.data[0].display_name,
-        lat: response.data[0].lat,
-        lon: response.data[0].lon,
+        lat: response.data[0].latitude,
+        lon: response.data[0].longitude,
       });
     } catch (error) {
       this.setState({
@@ -144,18 +146,17 @@ class Main extends React.Component {
             </MDBCardBody>
           </MDBCard>
         </MDBContainer>
+
         <MDBContainer>
           <MDBCard>
             <MDBCardBody>
               {this.state.displayInfo && (
                 <>
-                  <h2>{this.state.location_name}</h2>
+                  <h2 class="h2">{this.state.location_name}</h2>
                   <p>Lat: {this.state.lat}</p>
                   <p>Lon: {this.state.lon}</p>
-                  <Map
-                    lat={this.state.lat}
-                    lon={this.state.lon}
-                  />
+
+                  <Map lat={this.state.lat} lon={this.state.lon} />
 
                   <div>
                     {this.state.weatherResults.length > 0 && (
@@ -173,7 +174,8 @@ class Main extends React.Component {
             </MDBCardBody>
           </MDBCard>
         </MDBContainer>
-        <Modal show={this.state.showModal} onHide={this.closeModal}>
+
+        <MDBModal show={this.state.showModal} onHide={this.closeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Error</Modal.Title>
           </Modal.Header>
@@ -182,7 +184,7 @@ class Main extends React.Component {
               The information you've entered is not valid. Please try again.
             </p>
           </Modal.Body>
-        </Modal>
+        </MDBModal>
       </main>
     );
   }
