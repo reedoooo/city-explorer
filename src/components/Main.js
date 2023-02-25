@@ -45,7 +45,7 @@ class Main extends React.Component {
 
       let response = await axios(request);
       this.setState({
-        locationResults: response.data[0],
+        locationResults: response.data,
         location_name: response.data[0].display_name,
         lat: response.data[0].lat,
         lon: response.data[0].lon,
@@ -89,6 +89,9 @@ class Main extends React.Component {
     e.preventDefault();
     try {
       await this.handleLocationSearch();
+      console.log(this.state.locationResults);
+      console.log(this.state.locationResults[0]);
+
       await this.handleWeatherSearch();
       await this.handleMovieSearch();
 
