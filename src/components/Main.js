@@ -7,8 +7,6 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
-import { MDBModal } from "mdb-react-ui-kit/dist";
-
 class Main extends React.Component {
   constructor() {
     super();
@@ -175,7 +173,7 @@ class Main extends React.Component {
           </MDBCard>
         </MDBContainer>
 
-        <MDBModal show={this.state.showModal} onHide={this.closeModal}>
+        <Modal show={this.state.showModal} onHide={this.closeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Error</Modal.Title>
           </Modal.Header>
@@ -184,7 +182,7 @@ class Main extends React.Component {
               The information you've entered is not valid. Please try again.
             </p>
           </Modal.Body>
-        </MDBModal>
+        </Modal>
       </main>
     );
   }
