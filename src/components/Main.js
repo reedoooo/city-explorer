@@ -14,12 +14,15 @@ class Main extends React.Component {
     this.state = {
       displayInfo: false,
       showModal: false,
-      searchInput: "",
+      error: null,
+      searchInput: "", //city
       location: {},
       locationResults: [],
       weatherResults: [],
       movieResults: [],
-      error: null,
+      location_name: "",
+      lat: "",
+      lon: "",
     };
   }
 
@@ -29,20 +32,23 @@ class Main extends React.Component {
       {
         searchInput: searchResult,
       },
-      () => console.log(this.state.locationResults)
+      () => console.log(this.state.searchResult)
     );
   };
 
   handleLocationSearch = async () => {
     try {
       let request = {
-        locationUrl: `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`,
+        locationUrl: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`,
         method: "GET",
       };
 
       let response = await axios(request);
       this.setState({
         locationResults: response.data[0],
+        location_name: response.data[0].display_name,
+        lat: response.data[0].lat,
+        lon: response.data[0].lon,
       });
     } catch (error) {
       this.setState({
@@ -53,7 +59,7 @@ class Main extends React.Component {
 
   handleWeatherSearch = async () => {
     try {
-      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.locationResults}`;
+      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.location_name}`;
       let response = await axios.get(weatherUrl);
       this.setState({
         weatherResults: response.data,
@@ -67,7 +73,7 @@ class Main extends React.Component {
 
   handleMovieSearch = async () => {
     try {
-      let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.locationResults}`;
+      let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.location_name}`;
       let response = await axios.get(moviesUrl);
       this.setState({
         movieResults: response.data,
@@ -85,6 +91,7 @@ class Main extends React.Component {
       await this.handleLocationSearch();
       await this.handleWeatherSearch();
       await this.handleMovieSearch();
+
       this.setState({
         displayInfo: true,
         location: this.state.locationResults,
