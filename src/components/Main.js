@@ -149,12 +149,12 @@ class Main extends React.Component {
             <MDBCardBody>
               {this.state.displayInfo && (
                 <>
-                  <h2>{this.state.location.display_name}</h2>
-                  <p>Lat: {this.state.location.lat}</p>
-                  <p>Lon: {this.state.location.lon}</p>
+                  <h2>{this.state.location_name}</h2>
+                  <p>Lat: {this.state.lat}</p>
+                  <p>Lon: {this.state.lon}</p>
                   <Map
-                    lat={this.state.location.lat}
-                    lon={this.state.location.lon}
+                    lat={this.state.lat}
+                    lon={this.state.lon}
                   />
 
                   <div>
