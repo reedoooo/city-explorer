@@ -3,11 +3,8 @@ import Map from "./Map";
 import Weather from "./Weather";
 import Movies from "./Movies";
 import axios from "axios";
-import { MDBContainer } from "mdb-react-ui-kit";
-import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
-import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
-import { MDBModal } from "mdb-react-ui-kit/dist";
+import { MDBBtn, MDBCard, MDBCardBody, MDBContainer, MDBModal } from "mdb-react-ui-kit";
 
 class Main extends React.Component {
   constructor() {
@@ -191,3 +188,4 @@ class Main extends React.Component {
 }
 
 export default Main;
+
