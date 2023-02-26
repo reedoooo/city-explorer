@@ -46,9 +46,9 @@ class Main extends React.Component {
       let response = await axios(request);
       this.setState({
         locationResults: response.data,
-        location_name: response.data[0].display_name,
-        lat: response.data[0].latitude,
-        lon: response.data[0].longitude,
+        location_name: response.data.display_name,
+        lat: response.data.latitude,
+        lon: response.data.longitude,
       });
     } catch (error) {
       this.setState({
