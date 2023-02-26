@@ -21,8 +21,8 @@ class Main extends React.Component {
       weatherResults: [],
       movieResults: [],
       location_name: "",
-      lat: "",
-      lon: "",
+      latitude: "",
+      longitude: "",
     };
   }
 
@@ -44,11 +44,14 @@ class Main extends React.Component {
       };
 
       let response = await axios(request);
+            console.log("display name", response.data[0].display_name);
+            console.log("latitude", response.data[0].lat);
+            console.log("longitude", response.data[0].lon);
       this.setState({
-        locationResults: response.data[0],
+        location: response.data[0],
         location_name: response.data[0].display_name,
-        lat: response.data[0].latitude,
-        lon: response.data[0].longitude,
+        latitude: response.data[0].lat,
+        longitude: response.data[0].lon,
       });
     } catch (error) {
       this.setState({
@@ -95,7 +98,6 @@ class Main extends React.Component {
 
       this.setState({
         displayInfo: true,
-        location: this.state.locationResults[0],
       });
     } catch (error) {
       this.setState({
@@ -148,11 +150,11 @@ class Main extends React.Component {
               {this.state.displayInfo && (
                 <>
                   <h2>{this.state.location_name}</h2>
-                  <p>Lat: {this.state.lat}</p>
-                  <p>Lon: {this.state.lon}</p>
+                  <p>Lat: {this.state.latitude}</p>
+                  <p>Lon: {this.state.longitude}</p>
                   <Map
-                    lat={this.state.lat}
-                    lon={this.state.lon}
+                    lat={this.state.latitude}
+                    lon={this.state.longitude}
                   />
 
                   <div>
