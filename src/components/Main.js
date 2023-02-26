@@ -7,6 +7,8 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import { MDBModal } from "dist/mdb-react-ui-kit";
+
 class Main extends React.Component {
   constructor() {
     super();
@@ -173,7 +175,7 @@ class Main extends React.Component {
           </MDBCard>
         </MDBContainer>
 
-        <Modal show={this.state.showModal} onHide={this.closeModal}>
+        <MDBModal show={this.state.showModal} onHide={this.closeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Error</Modal.Title>
           </Modal.Header>
