@@ -184,7 +184,7 @@ class Main extends React.Component {
               The information you've entered is not valid. Please try again.
             </p>
           </Modal.Body>
-        </Modal>
+        </MDBModal>
       </main>
     );
   }
