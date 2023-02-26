@@ -3,6 +3,8 @@
 
 **Author**: Reed Vogt
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6db8ff2a-ce56-420b-9949-daca0aa22fb1/deploy-status)](https://app.netlify.com/sites/reedthahuman-city-explorer/deploys)
+
 ## Overview
 
 An app which enables users to input a location and receive back geographical information about that location .

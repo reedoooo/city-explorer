@@ -47,8 +47,8 @@ class Main extends React.Component {
       this.setState({
         locationResults: response.data,
         location_name: response.data[0].display_name,
-        lat: response.data[0].lat,
-        lon: response.data[0].lon,
+        lat: response.data[0].latitude,
+        lon: response.data[0].longitude,
       });
     } catch (error) {
       this.setState({
