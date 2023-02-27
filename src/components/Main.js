@@ -14,6 +14,7 @@ class Main extends React.Component {
     super();
     this.state = {
       displayInfo: false,
+      infoChoice: false,
       showModal: false,
       error: null,
       searchInput: "", //city
@@ -21,6 +22,7 @@ class Main extends React.Component {
       yelpResults: [],
       weatherResults: [],
       movieResults: [],
+      hideOthers: false, // new state property to hide other choices
     };
   }
 
@@ -36,6 +38,9 @@ class Main extends React.Component {
 
   handleWeatherSearch = async () => {
     try {
+      if (this.state.hideOthers) {
+        return;
+      } // do not search if others are hidden
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(weatherUrl);
       this.setState({
@@ -50,6 +55,9 @@ class Main extends React.Component {
 
   handleMovieSearch = async () => {
     try {
+      if (this.state.hideOthers) {
+        return;
+      } // do not search if others are hidden
       let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(moviesUrl);
       this.setState({
@@ -64,16 +72,16 @@ class Main extends React.Component {
 
   handleYelpSearch = async () => {
     try {
-      //await means to wait for the server request to return
+      if (this.state.hideOthers) {
+        return;
+      } // do not search if others are hidden
       let yelpUrl = `${process.env.REACT_APP_SERVER}/yelp?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(yelpUrl);
 
       this.setState({
-        //setState assigns the needYelp.data to the yelp property
-        yelpResults: response,
+        yelpResults: response.data,
         error: false,
       });
-      //a catch in if statement. If we don't get any yelp data back, we are returning an error
     } catch (error) {
       this.setState({
         showModal: true,
@@ -100,6 +108,7 @@ class Main extends React.Component {
     e.preventDefault();
     try {
       await this.handleLocationSearch();
+      this.setState({ hideOthers: true });
       await this.handleWeatherSearch();
       await this.handleMovieSearch();
       await this.handleYelpSearch();
@@ -168,18 +177,43 @@ class Main extends React.Component {
 
                   <div>
                     {this.state.weatherResults.length > 0 && (
-                      <Weather weatherResults={this.state.weatherResults} />
+                      <>
+                        <Weather weatherResults={this.state.weatherResults} />
+                        <MDBBtn
+                          onClick={this.handleWeatherSearch}
+                          className="weatherButton"
+                        >
+                          Reload Weather
+                        </MDBBtn>
+                      </>
                     )}
                   </div>
 
                   <div>
                     {this.state.movieResults.length > 0 && (
-                      <Movies movieResults={this.state.movieResults} />
+                      <>
+                        <Movies movieResults={this.state.movieResults} />
+                        <MDBBtn
+                          onClick={this.handleMovieSearch}
+                          className="movieButton"
+                        >
+                          Reload Movies
+                        </MDBBtn>
+                      </>
                     )}
                   </div>
+
                   <div>
-                    {this.state.movieResults.length > 0 && (
-                      <Yelp yelpResults={this.state.yelpResults} />
+                    {this.state.yelpResults.length > 0 && (
+                      <>
+                        <Yelp yelpResults={this.state.yelpResults} />
+                        <MDBBtn
+                          onClick={this.handleYelpSearch}
+                          className="yelpButton"
+                        >
+                          Reload Yelp
+                        </MDBBtn>
+                      </>
                     )}
                   </div>
                 </>
