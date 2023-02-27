@@ -9,7 +9,7 @@ class Map extends React.Component {
           src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.props.latitude},${this.props.longitude}&zoom=13&format=json`}
           alt=""
         />
-        {console.log(process.env.REACT_APP_LOCATION_KEY)}
+        {console.log(this.props.latitude)}
       </Container>
     );
   }
