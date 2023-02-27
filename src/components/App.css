@@ -2,6 +2,11 @@ body {
   background: linear-gradient(to right, #8e9eab, #eef2f3);
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .navbar-brand {
   margin: 0 auto;
 }
