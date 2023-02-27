@@ -45,10 +45,7 @@ class Main extends React.Component {
 
       let response = await axios(request);
       this.setState({
-        location: response.data,
-        location_name: response.data[0].display_name,
-        latitude: response.data[0].lat,
-        longitude: response.data[0].lon,
+        location: response.data[0],
       });
     } catch (error) {
       this.setState({
@@ -145,12 +142,12 @@ class Main extends React.Component {
             <MDBCardBody>
               {this.state.displayInfo && (
                 <>
-                  <h2>{this.state.location_name}</h2>
-                  <p>Lat: {this.state.latitude}</p>
-                  <p>Lon: {this.state.longitude}</p>
+                  <h2>{this.state.location.dipslay}</h2>
+                  <p>Lat: {this.state.location.lat}</p>
+                  <p>Lon: {this.state.location.lon}</p>
                   <Map
-                    lat={this.state.latitude}
-                    lon={this.state.longitude}
+                    lat={this.state.location.lat}
+                    lon={this.state.location.lon}
                   />
 
                   <div>
