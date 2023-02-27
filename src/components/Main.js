@@ -176,51 +176,45 @@ class Main extends React.Component {
                   />
 
                   <div>
-                    {this.state.weatherResults.length > 0 && (
+                    {!this.state.hideOthers && this.state.weatherResults.length > 0 && (
                       <>
                         <Weather weatherResults={this.state.weatherResults} />
                       </>
                     )}
-                    {!this.state.hideOthers && (
-                      <MDBBtn
+                    <MDBBtn
                         onClick={this.handleWeatherSearch}
                         className="weatherButton"
                       >
                         load Weather
-                      </MDBBtn>
-                    )}
+                    </MDBBtn>
                   </div>
 
                   <div>
-                    {this.state.movieResults.length > 0 && (
+                    {!this.state.hideOthers && this.state.movieResults.length > 0 && (
                       <>
                         <Movies movieResults={this.state.movieResults} />
                       </>
                     )}
-                    {!this.state.hideOthers && (
-                      <MDBBtn
+                    <MDBBtn
                         onClick={this.handleMovieSearch}
                         className="movieButton"
                       >
                         load Movies
-                      </MDBBtn>
-                    )}
+                    </MDBBtn>
                   </div>
 
                   <div>
-                    {this.state.yelpResults.length > 0 && (
+                    {!this.state.hideOthers && this.state.yelpResults.length > 0 && (
                       <>
                         <Yelp yelpResults={this.state.yelpResults} />
                       </>
                     )}
-                    {!this.state.hideOthers && (
-                      <MDBBtn
+                    <MDBBtn
                         onClick={this.handleYelpSearch}
                         className="yelpButton"
                       >
                         load Yelp
-                      </MDBBtn>
-                    )}
+                    </MDBBtn>
                   </div>
                 </>
               )}
