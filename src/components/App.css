@@ -87,9 +87,11 @@ main {
   background-color: #27ae60;
 }
 
-div.col.button {
+div.col {
   display: flex;
   justify-content: center;
+
+  align-items: center;
 }
 
 /* Results container */
