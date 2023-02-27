@@ -87,6 +87,11 @@ main {
   background-color: #27ae60;
 }
 
+div.col.button {
+  display: flex;
+  justify-content: center;
+}
+
 /* Results container */
 h2 {
   font-size: 24px;
