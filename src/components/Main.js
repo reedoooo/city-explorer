@@ -151,7 +151,6 @@ class Main extends React.Component {
               </div>
             </MDBCardBody>
           </MDBCard>
-        </MDBContainer>
         <MDBContainer>
           <MDBCard>
             <MDBCardBody>
@@ -198,7 +197,6 @@ class Main extends React.Component {
                         </MDBBtn>
                       </MDBCol>
                     </MDBRow>
-
                     <div>
                       {this.state.activeChoice === "weather" && (
                         <Weather weatherResults={this.state.weatherResults} />
@@ -219,6 +217,7 @@ class Main extends React.Component {
               )}
             </MDBCardBody>
           </MDBCard>
+        </MDBContainer>
         </MDBContainer>
         <Modal show={this.state.showModal} onHide={this.closeModal}>
           <Modal.Header closeButton>
