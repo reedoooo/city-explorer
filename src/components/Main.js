@@ -33,24 +33,6 @@ class Main extends React.Component {
     );
   };
 
-  handleLocationSearch = async () => {
-    try {
-      let request = {
-        locationUrl: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`,
-        method: "GET",
-      };
-
-      let response = await axios(request);
-      this.setState({
-        location: response.data[0],
-      });
-    } catch (error) {
-      this.setState({
-        showModal: true,
-      });
-    }
-  };
-
   handleWeatherSearch = async () => {
     try {
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchInput}`;
@@ -71,6 +53,21 @@ class Main extends React.Component {
       let response = await axios.get(moviesUrl);
       this.setState({
         movieResults: response.data,
+      });
+    } catch (error) {
+      this.setState({
+        showModal: true,
+      });
+    }
+  };
+
+  handleLocationSearch = async () => {
+    try {
+      let locationUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`;
+
+      let response = await axios.get(locationUrl);
+      this.setState({
+        location: response.data[0],
       });
     } catch (error) {
       this.setState({
@@ -111,7 +108,7 @@ class Main extends React.Component {
             <MDBCardBody>
               <div className="p-5 text-center bg-light">
                 <h1 className="mb-3">City Explorer</h1>
-                <Form className="mainForm" onSubmit={this.handleLocationSearch}>
+                <Form className="mainForm" onSubmit={this.displayLocation}>
                   <Form.Group>
                     <Form.Label>City</Form.Label>
                     <Form.Control
