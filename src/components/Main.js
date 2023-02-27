@@ -36,7 +36,7 @@ class Main extends React.Component {
     );
   };
 
-  handleWeatherSearch = async () => {
+  handleWeatherSearch = async (e) => {
     try {
       if (this.state.hideOthers) {
         return;
@@ -181,12 +181,14 @@ class Main extends React.Component {
                         <Weather weatherResults={this.state.weatherResults} />
                       </>
                     )}
-                    <MDBBtn
-                      onClick={this.handleWeatherSearch}
-                      className="weatherButton"
-                    >
-                      load Weather
-                    </MDBBtn>
+                    {!this.state.hideOthers && (
+                      <MDBBtn
+                        onClick={this.handleWeatherSearch}
+                        className="weatherButton"
+                      >
+                        load Weather
+                      </MDBBtn>
+                    )}
                   </div>
 
                   <div>
@@ -195,12 +197,14 @@ class Main extends React.Component {
                         <Movies movieResults={this.state.movieResults} />
                       </>
                     )}
-                    <MDBBtn
-                      onClick={this.handleMovieSearch}
-                      className="movieButton"
-                    >
-                      load Movies
-                    </MDBBtn>
+                    {!this.state.hideOthers && (
+                      <MDBBtn
+                        onClick={this.handleMovieSearch}
+                        className="movieButton"
+                      >
+                        load Movies
+                      </MDBBtn>
+                    )}
                   </div>
 
                   <div>
@@ -209,12 +213,14 @@ class Main extends React.Component {
                         <Yelp yelpResults={this.state.yelpResults} />
                       </>
                     )}
-                    <MDBBtn
-                      onClick={this.handleYelpSearch}
-                      className="yelpButton"
-                    >
-                      load Yelp
-                    </MDBBtn>
+                    {!this.state.hideOthers && (
+                      <MDBBtn
+                        onClick={this.handleYelpSearch}
+                        className="yelpButton"
+                      >
+                        load Yelp
+                      </MDBBtn>
+                    )}
                   </div>
                 </>
               )}
