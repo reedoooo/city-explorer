@@ -9,6 +9,7 @@ class Weather extends React.Component {
         {this.props.weatherResults.map((item, idx) => (
           <WeatherDay item={item} key={idx} />
         ))}
+        {console.log('weather working')}
       </>
     );
   }

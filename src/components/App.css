@@ -197,7 +197,9 @@ p {
   margin:auto;
 }
 
-.yelpButton, .movieButton, .weatherButton {
+.yelpButton,
+.movieButton,
+.weatherButton {
   background-color: #2ecc71;
     border: none;
     color: #fff;

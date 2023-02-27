@@ -2,12 +2,12 @@ import React from "react";
 import Map from "./Map";
 import Weather from "./Weather";
 import Movies from "./Movies";
+import Yelp from "./Yelp";
 import axios from "axios";
 import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
-import Yelp from "./Yelp";
 
 class Main extends React.Component {
   constructor() {
@@ -22,11 +22,11 @@ class Main extends React.Component {
       yelpResults: [],
       weatherResults: [],
       movieResults: [],
-      hideOthers: false, // new state property to hide other choices
+      activeChoice: null, // new state property to track active button
     };
   }
 
-  handleSearchInput = async (e) => {
+  handleSearchInput = (e) => {
     let searchResult = e.target.value;
     this.setState(
       {
@@ -36,11 +36,8 @@ class Main extends React.Component {
     );
   };
 
-  handleWeatherSearch = async (e) => {
+  handleWeatherSearch = async () => {
     try {
-      // if (this.state.hideOthers) {
-      //   return;
-      // } // do not search if others are hidden
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(weatherUrl);
       this.setState({
@@ -55,9 +52,6 @@ class Main extends React.Component {
 
   handleMovieSearch = async () => {
     try {
-      // if (this.state.hideOthers) {
-      //   return;
-      // } // do not search if others are hidden
       let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(moviesUrl);
       this.setState({
@@ -72,9 +66,6 @@ class Main extends React.Component {
 
   handleYelpSearch = async () => {
     try {
-      // if (this.state.hideOthers) {
-      //   return;
-      // } // do not search if others are hidden
       let yelpUrl = `${process.env.REACT_APP_SERVER}/yelp?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(yelpUrl);
 
@@ -108,13 +99,13 @@ class Main extends React.Component {
     e.preventDefault();
     try {
       await this.handleLocationSearch();
-      this.setState({ hideOthers: true });
       await this.handleWeatherSearch();
       await this.handleMovieSearch();
       await this.handleYelpSearch();
 
       this.setState({
         displayInfo: true,
+        activeChoice: null, // reset active button on new search
       });
     } catch (error) {
       this.setState({
@@ -176,45 +167,39 @@ class Main extends React.Component {
                   />
 
                   <div>
-                    {!this.state.hideOthers && this.state.weatherResults.length > 0 && (
-                      <>
-                        <Weather weatherResults={this.state.weatherResults} />
-                      </>
-                    )}
                     <MDBBtn
-                        onClick={this.handleWeatherSearch}
-                        className="weatherButton"
-                      >
-                        load Weather
+                      onClick={() => this.setState({ activeChoice: "weather" })}
+                      className="weatherButton"
+                    >
+                      Load Weather
                     </MDBBtn>
+                    {this.state.activeChoice === "weather" && (
+                      <Weather weatherResults={this.state.weatherResults} />
+                    )}
                   </div>
 
                   <div>
-                    {!this.state.hideOthers && this.state.movieResults.length > 0 && (
-                      <>
-                        <Movies movieResults={this.state.movieResults} />
-                      </>
-                    )}
                     <MDBBtn
-                        onClick={this.handleMovieSearch}
-                        className="movieButton"
-                      >
-                        load Movies
+                      onClick={() => this.setState({ activeChoice: "movies" })}
+                      className="movieButton"
+                    >
+                      Load Movies
                     </MDBBtn>
+                    {this.state.activeChoice === "movies" && (
+                      <Movies movieResults={this.state.movieResults} />
+                    )}
                   </div>
 
                   <div>
-                    {!this.state.hideOthers && this.state.yelpResults.length > 0 && (
-                      <>
-                        <Yelp yelpResults={this.state.yelpResults} />
-                      </>
-                    )}
                     <MDBBtn
-                        onClick={this.handleYelpSearch}
-                        className="yelpButton"
-                      >
-                        load Yelp
+                      onClick={() => this.setState({ activeChoice: "yelp" })}
+                      className="yelpButton"
+                    >
+                      Load Yelp
                     </MDBBtn>
+                    {this.state.activeChoice === "yelp" && (
+                      <Yelp yelpResults={this.state.yelpResults} />
+                    )}
                   </div>
                 </>
               )}

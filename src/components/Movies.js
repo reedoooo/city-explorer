@@ -18,6 +18,7 @@ class Movies extends React.Component {
             released_on={item.released_on}
           />
         ))}
+        {console.log('movie working')}
       </>
     );
   }
