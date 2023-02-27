@@ -82,6 +82,7 @@ class Main extends React.Component {
 
   handleLocationSearch = async () => {
     try {
+      // let locationUrl = `${process.env.REACT_APP_SERVER}/key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`;
       let locationUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`;
 
       let response = await axios.get(locationUrl);
@@ -125,97 +126,112 @@ class Main extends React.Component {
     return (
       <main>
         <MDBContainer>
-          <MDBCard>
-            <MDBCardBody>
-              <div className="p-5 text-center bg-light">
-                <h1 className="mb-3">City Explorer</h1>
-                <Form className="mainForm" onSubmit={this.displayLocation}>
-                  <Form.Group>
-                    <Form.Label>City</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onInput={this.handleSearchInput}
-                    />
-                  </Form.Group>
-                  <MDBBtn
-                    onClick={this.displayLocation}
-                    className="mainButton"
-                    style={{
-                      background:
-                        "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
-                    }}
-                  >
-                    Explore!
-                  </MDBBtn>
-                </Form>
-              </div>
-            </MDBCardBody>
-          </MDBCard>
+          <MDBContainer>
+            <MDBCard>
+              <MDBCardBody>
+                <div className="p-5 text-center bg-light">
+                  <h1 className="mb-3">City Explorer</h1>
+                  <Form className="mainForm" onSubmit={this.displayLocation}>
+                    <Form.Group>
+                      <Form.Label>City</Form.Label>
+                      <Form.Control
+                        type="text"
+                        onInput={this.handleSearchInput}
+                      />
+                    </Form.Group>
+                    <MDBBtn
+                      onClick={this.displayLocation}
+                      className="mainButton"
+                      style={{
+                        background:
+                          "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
+                      }}
+                    >
+                      Explore!
+                    </MDBBtn>
+                  </Form>
+                  <MDBRow className="buttonRow">
+                    <MDBCol>
+                      <MDBBtn
+                        onClick={() =>
+                          this.setState({ activeChoice: "weather" })
+                        }
+                        className="weatherButton"
+                        style={{
+                          background:
+                            "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
+                        }}
+                      >
+                        Load Weather
+                      </MDBBtn>
+                    </MDBCol>
+                    <MDBCol>
+                      <MDBBtn
+                        onClick={() =>
+                          this.setState({ activeChoice: "movies" })
+                        }
+                        className="movieButton"
+                        style={{
+                          background:
+                            "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
+                        }}
+                      >
+                        Load Movies
+                      </MDBBtn>
+                    </MDBCol>
+                    <MDBCol>
+                      <MDBBtn
+                        onClick={() => this.setState({ activeChoice: "yelp" })}
+                        className="yelpButton"
+                        style={{
+                          background:
+                            "linear-gradient(to right, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5))",
+                        }}
+                      >
+                        Load Yelp
+                      </MDBBtn>
+                    </MDBCol>
+                  </MDBRow>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBContainer>
           <MDBContainer>
             <MDBCard>
               <MDBCardBody>
                 {this.state.displayInfo && (
                   <>
-                    <h2>{this.state.location.display_name}</h2>
-                    <p>Lat: {this.state.location.lat}</p>
-                    <p>Lon: {this.state.location.lon}</p>
-                    <MDBContainer className="mapContainer">
-                      <Map
-                        lat={this.state.location.lat}
-                        lon={this.state.location.lon}
-                        searchInput={this.state.searchInput}
-                      />
-                    </MDBContainer>
-
                     <MDBContainer>
-                      <MDBRow className="buttonRow">
-                        <MDBCol>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "weather" })
-                            }
-                            className="mainButton weatherButton"
-                          >
-                            Load Weather
-                          </MDBBtn>
-                        </MDBCol>
-                        <MDBCol>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "movies" })
-                            }
-                            className="mainButton movieButton"
-                          >
-                            Load Movies
-                          </MDBBtn>
-                        </MDBCol>
-                        <MDBCol>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "yelp" })
-                            }
-                            className="mainButton yelpButton"
-                          >
-                            Load Yelp
-                          </MDBBtn>
-                        </MDBCol>
-                      </MDBRow>
-                      <div>
-                        {this.state.activeChoice === "weather" && (
-                          <Weather weatherResults={this.state.weatherResults} />
-                        )}
-                      </div>
-                      <div>
-                        {this.state.activeChoice === "movies" && (
-                          <Movies movieResults={this.state.movieResults} />
-                        )}
-                      </div>
-                      <div>
-                        {this.state.activeChoice === "yelp" && (
-                          <Yelp yelpResults={this.state.yelpResults} />
-                        )}
+                      <h2 className="mb-3">
+                        {this.state.location.display_name}
+                      </h2>
+                      <MDBContainer className="mapContainer">
+                        <Map
+                          lat={this.state.location.lat}
+                          lon={this.state.location.lon}
+                          searchInput={this.state.searchInput}
+                        />
+                      </MDBContainer>
+                      <div className="divLatLon">
+                        <p>Lat: {this.state.location.lat}</p>
+                        <p>Lon: {this.state.location.lon}</p>
                       </div>
                     </MDBContainer>
+                    <div>
+                      {this.state.activeChoice === "weather" && (
+                        <Weather weatherResults={this.state.weatherResults} />
+                      )}
+                    </div>
+                    <div>
+                      {this.state.activeChoice === "movies" && (
+                        <Movies movieResults={this.state.movieResults} />
+                      )}
+                    </div>
+                    <div>
+                      {this.state.activeChoice === "yelp" && (
+                        <Yelp yelpResults={this.state.yelpResults} />
+                      )}
+                    </div>
                   </>
                 )}
               </MDBCardBody>

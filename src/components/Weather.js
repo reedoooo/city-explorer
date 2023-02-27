@@ -5,11 +5,11 @@ class Weather extends React.Component {
   render() {
     return (
       <>
-        <h2>Daily Forecast:</h2>
+        <h2 className="mb-3">Daily Forecast:</h2>
         {this.props.weatherResults.map((item, idx) => (
           <WeatherDay item={item} key={idx} />
         ))}
-        {console.log('weather working')}
+        {console.log("weather working")}
       </>
     );
   }
