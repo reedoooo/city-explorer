@@ -13,7 +13,7 @@ class Movies extends React.Component {
             overvew={item.overvew}
             average_votes={item.average_votes}
             total_votes={item.total_votes}
-            poster={item.poster_path}
+            poster={item.posterImgPath}
             popularity={item.popularity}
             released_on={item.released_on}
           />

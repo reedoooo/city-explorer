@@ -9,7 +9,7 @@ class Movie extends React.Component {
           <MDBCard>
             <MDBCardBody>
               <h3>{this.props.title}</h3>
-              <img src={this.props.poster_path} alt={this.props.title} />
+              <img src={this.props.posterImgPath} alt={this.props.title} />
               <p>{this.props.overview}</p>
               <p>Release Date: {this.props.released_on}</p>
               <p>
