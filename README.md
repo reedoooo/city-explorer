@@ -22,7 +22,7 @@ Used react, bootstrap, css, javascript, html, express, nodejs
 - 2-21-2022 created the function for finding the location and showing results and pictures of map
 - 2-22-2022 created front end and backend end and completed all functionality but still working on CSS
 - 2-23-2022 fixed everything I had broken and organized it into a cohesive app. Added the weather and movie APIs
-- 2-24-2022
+- 2-24-2022 more CSS and added the yelp feature
 
 ### Credit and Collaborations
 
@@ -82,11 +82,12 @@ Actual time needed to complete: 12h 20m
 
 **Name of feature:**
 
-Start time:
+Start time: 12:30pm
 
-Finish time:
+Finish time: 7:30pm
 
-Actual time needed to complete:
+Actual time needed to complete: 7h
+
 
 ## Images
 

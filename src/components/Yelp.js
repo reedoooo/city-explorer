@@ -1,5 +1,5 @@
 import React from "react";
-import Yelps from "./yelps";
+import Yelps from "./Yelps";
 
 class Yelp extends React.Component {
   render() {
