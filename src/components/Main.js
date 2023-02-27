@@ -169,7 +169,7 @@ class Main extends React.Component {
                   <div>
                     <MDBBtn
                       onClick={() => this.setState({ activeChoice: "weather" })}
-                      className="weatherButton"
+                      className="mainButton weatherButton"
                     >
                       Load Weather
                     </MDBBtn>
@@ -181,7 +181,7 @@ class Main extends React.Component {
                   <div>
                     <MDBBtn
                       onClick={() => this.setState({ activeChoice: "movies" })}
-                      className="movieButton"
+                      className="mainButton movieButton"
                     >
                       Load Movies
                     </MDBBtn>
@@ -193,7 +193,7 @@ class Main extends React.Component {
                   <div>
                     <MDBBtn
                       onClick={() => this.setState({ activeChoice: "yelp" })}
-                      className="yelpButton"
+                      className="mainButton yelpButton"
                     >
                       Load Yelp
                     </MDBBtn>
