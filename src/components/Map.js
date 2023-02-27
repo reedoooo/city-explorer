@@ -6,7 +6,7 @@ class Map extends React.Component {
     return (
       <Container>
         <img
-          src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.props.lat},${this.props.lon}&zoom=13&format=json`}
+          src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.props.latitude},${this.props.longitude}&zoom=13&format=json`}
           alt=""
         />
         {console.log(process.env.REACT_APP_LOCATION_KEY)}

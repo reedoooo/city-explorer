@@ -32,14 +32,14 @@ class Main extends React.Component {
       {
         searchInput: searchResult,
       },
-      () => console.log(this.state.searchResult)
+      () => console.log(this.state.searchInput)
     );
   };
 
-  handleLocationSearch = async (searchInput) => {
+  handleLocationSearch = async () => {
     try {
       let request = {
-        locationUrl: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${searchInput}&format=json`,
+        locationUrl: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`,
         method: "GET",
       };
 
