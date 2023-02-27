@@ -111,7 +111,7 @@ class Main extends React.Component {
             <MDBCardBody>
               <div className="p-5 text-center bg-light">
                 <h1 className="mb-3">City Explorer</h1>
-                <Form className="mainForm" onSubmit={this.displayLocation}>
+                <Form className="mainForm" onSubmit={this.handleLocationSearch}>
                   <Form.Group>
                     <Form.Label>City</Form.Label>
                     <Form.Control
@@ -145,6 +145,7 @@ class Main extends React.Component {
                   <Map
                     lat={this.state.location.lat}
                     lon={this.state.location.lon}
+                    searchInput={this.state.searchInput}
                   />
 
                   <div>
