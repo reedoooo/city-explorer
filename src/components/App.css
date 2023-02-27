@@ -196,6 +196,11 @@ p {
   justify-content: center;
 }
 
+.buttonRow {
+  display:flex;
+  justify-content: center;
+}
+
 .maps {
   /* height:35%; */
   width:35%;
@@ -206,6 +211,7 @@ p {
 .movieButton,
 .weatherButton {
   background-color: #2ecc71;
+    margin: auto;
     border: none;
     color: #fff;
     padding: 10px 20px;

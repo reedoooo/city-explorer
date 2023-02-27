@@ -168,7 +168,7 @@ class Main extends React.Component {
                     </MDBContainer>
 
                     <MDBContainer>
-                      <MDBRow>
+                      <MDBRow className="buttonRow">
                         <MDBCol>
                           <MDBBtn
                             onClick={() =>
