@@ -179,42 +179,42 @@ class Main extends React.Component {
                     {this.state.weatherResults.length > 0 && (
                       <>
                         <Weather weatherResults={this.state.weatherResults} />
-                        <MDBBtn
-                          onClick={this.handleWeatherSearch}
-                          className="weatherButton"
-                        >
-                          Reload Weather
-                        </MDBBtn>
                       </>
                     )}
+                    <MDBBtn
+                      onClick={this.handleWeatherSearch}
+                      className="weatherButton"
+                    >
+                      load Weather
+                    </MDBBtn>
                   </div>
 
                   <div>
                     {this.state.movieResults.length > 0 && (
                       <>
                         <Movies movieResults={this.state.movieResults} />
-                        <MDBBtn
-                          onClick={this.handleMovieSearch}
-                          className="movieButton"
-                        >
-                          Reload Movies
-                        </MDBBtn>
                       </>
                     )}
+                    <MDBBtn
+                      onClick={this.handleMovieSearch}
+                      className="movieButton"
+                    >
+                      load Movies
+                    </MDBBtn>
                   </div>
 
                   <div>
                     {this.state.yelpResults.length > 0 && (
                       <>
                         <Yelp yelpResults={this.state.yelpResults} />
-                        <MDBBtn
-                          onClick={this.handleYelpSearch}
-                          className="yelpButton"
-                        >
-                          Reload Yelp
-                        </MDBBtn>
                       </>
                     )}
+                    <MDBBtn
+                      onClick={this.handleYelpSearch}
+                      className="yelpButton"
+                    >
+                      load Yelp
+                    </MDBBtn>
                   </div>
                 </>
               )}

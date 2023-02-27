@@ -197,6 +197,19 @@ p {
   margin:auto;
 }
 
+.yelpButton, .movieButton, .weatherButton {
+  background-color: #2ecc71;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.
+
 /* body {
   font-family: 'Roboto', sans-serif;
 }
