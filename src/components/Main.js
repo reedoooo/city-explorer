@@ -20,9 +20,6 @@ class Main extends React.Component {
       locationResults: [],
       weatherResults: [],
       movieResults: [],
-      location_name: "",
-      latitude: "",
-      longitude: "",
     };
   }
 
@@ -142,7 +139,7 @@ class Main extends React.Component {
             <MDBCardBody>
               {this.state.displayInfo && (
                 <>
-                  <h2>{this.state.location.dipslay}</h2>
+                  <h2>{this.state.location.display_name}</h2>
                   <p>Lat: {this.state.location.lat}</p>
                   <p>Lon: {this.state.location.lon}</p>
                   <Map
