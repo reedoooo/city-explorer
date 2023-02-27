@@ -7,6 +7,7 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import Yelp from "./Yelp";
 
 class Main extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class Main extends React.Component {
       error: null,
       searchInput: "", //city
       location: {},
-      locationResults: [],
+      yelpResults: [],
       weatherResults: [],
       movieResults: [],
     };
@@ -61,6 +62,25 @@ class Main extends React.Component {
     }
   };
 
+  handleYelpSearch = async () => {
+    try {
+      //await means to wait for the server request to return
+      let yelpUrl = `${process.env.REACT_APP_SERVER}/yelp?searchQuery=${this.state.searchInput}`;
+      let response = await axios.get(yelpUrl);
+
+      this.setState({
+        //setState assigns the needYelp.data to the yelp property
+        yelpResults: response,
+        error: false,
+      });
+      //a catch in if statement. If we don't get any yelp data back, we are returning an error
+    } catch (error) {
+      this.setState({
+        showModal: true,
+      });
+    }
+  };
+
   handleLocationSearch = async () => {
     try {
       let locationUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchInput}&format=json`;
@@ -82,6 +102,7 @@ class Main extends React.Component {
       await this.handleLocationSearch();
       await this.handleWeatherSearch();
       await this.handleMovieSearch();
+      await this.handleYelpSearch();
 
       this.setState({
         displayInfo: true,
@@ -154,6 +175,11 @@ class Main extends React.Component {
                   <div>
                     {this.state.movieResults.length > 0 && (
                       <Movies movieResults={this.state.movieResults} />
+                    )}
+                  </div>
+                  <div>
+                    {this.state.movieResults.length > 0 && (
+                      <Yelp yelpResults={this.state.yelpResults} />
                     )}
                   </div>
                 </>
