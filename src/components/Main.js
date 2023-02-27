@@ -38,9 +38,9 @@ class Main extends React.Component {
 
   handleWeatherSearch = async (e) => {
     try {
-      if (this.state.hideOthers) {
-        return;
-      } // do not search if others are hidden
+      // if (this.state.hideOthers) {
+      //   return;
+      // } // do not search if others are hidden
       let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(weatherUrl);
       this.setState({
@@ -55,9 +55,9 @@ class Main extends React.Component {
 
   handleMovieSearch = async () => {
     try {
-      if (this.state.hideOthers) {
-        return;
-      } // do not search if others are hidden
+      // if (this.state.hideOthers) {
+      //   return;
+      // } // do not search if others are hidden
       let moviesUrl = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(moviesUrl);
       this.setState({
@@ -72,9 +72,9 @@ class Main extends React.Component {
 
   handleYelpSearch = async () => {
     try {
-      if (this.state.hideOthers) {
-        return;
-      } // do not search if others are hidden
+      // if (this.state.hideOthers) {
+      //   return;
+      // } // do not search if others are hidden
       let yelpUrl = `${process.env.REACT_APP_SERVER}/yelp?searchQuery=${this.state.searchInput}`;
       let response = await axios.get(yelpUrl);
 
