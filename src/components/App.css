@@ -186,9 +186,15 @@ p {
   margin-bottom: 0;
 }
 
+.mapContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .maps {
-  height:20%;
-  width:20%;
+  height:35%;
+  width:35%;
+  margin:auto;
 }
 
 /* body {
