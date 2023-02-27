@@ -186,6 +186,11 @@ p {
   margin-bottom: 0;
 }
 
+.maps {
+  height:20%;
+  width:20%;
+}
+
 /* body {
   font-family: 'Roboto', sans-serif;
 }
