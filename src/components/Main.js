@@ -168,53 +168,52 @@ class Main extends React.Component {
                   <MDBContainer>
                     <MDBRow>
                       <MDBCol>
-                        <div>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "weather" })
-                            }
-                            className="mainButton weatherButton"
-                          >
-                            Load Weather
-                          </MDBBtn>
-                          {this.state.activeChoice === "weather" && (
-                            <Weather
-                              weatherResults={this.state.weatherResults}
-                            />
-                          )}
-                        </div>
+                        <MDBBtn
+                          onClick={() =>
+                            this.setState({ activeChoice: "weather" })
+                          }
+                          className="mainButton weatherButton"
+                        >
+                          Load Weather
+                        </MDBBtn>
                       </MDBCol>
                       <MDBCol>
-                        <div>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "movies" })
-                            }
-                            className="mainButton movieButton"
-                          >
-                            Load Movies
-                          </MDBBtn>
-                          {this.state.activeChoice === "movies" && (
-                            <Movies movieResults={this.state.movieResults} />
-                          )}
-                        </div>
+                        <MDBBtn
+                          onClick={() =>
+                            this.setState({ activeChoice: "movies" })
+                          }
+                          className="mainButton movieButton"
+                        >
+                          Load Movies
+                        </MDBBtn>
                       </MDBCol>
                       <MDBCol>
-                        <div>
-                          <MDBBtn
-                            onClick={() =>
-                              this.setState({ activeChoice: "yelp" })
-                            }
-                            className="mainButton yelpButton"
-                          >
-                            Load Yelp
-                          </MDBBtn>
-                          {this.state.activeChoice === "yelp" && (
-                            <Yelp yelpResults={this.state.yelpResults} />
-                          )}
-                        </div>
+                        <MDBBtn
+                          onClick={() =>
+                            this.setState({ activeChoice: "yelp" })
+                          }
+                          className="mainButton yelpButton"
+                        >
+                          Load Yelp
+                        </MDBBtn>
                       </MDBCol>
                     </MDBRow>
+
+                    <div>
+                      {this.state.activeChoice === "weather" && (
+                        <Weather weatherResults={this.state.weatherResults} />
+                      )}
+                    </div>
+                    <div>
+                      {this.state.activeChoice === "movies" && (
+                        <Movies movieResults={this.state.movieResults} />
+                      )}
+                    </div>
+                    <div>
+                      {this.state.activeChoice === "yelp" && (
+                        <Yelp yelpResults={this.state.yelpResults} />
+                      )}
+                    </div>
                   </MDBContainer>
                 </>
               )}
