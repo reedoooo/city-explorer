@@ -4,7 +4,7 @@ import Weather from "./Weather";
 import Movies from "./Movies";
 import Yelp from "./Yelp";
 import axios from "axios";
-import { MDBContainer } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Modal, Form } from "react-bootstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
@@ -165,42 +165,57 @@ class Main extends React.Component {
                     lon={this.state.location.lon}
                     searchInput={this.state.searchInput}
                   />
-
-                  <div>
-                    <MDBBtn
-                      onClick={() => this.setState({ activeChoice: "weather" })}
-                      className="mainButton weatherButton"
-                    >
-                      Load Weather
-                    </MDBBtn>
-                    {this.state.activeChoice === "weather" && (
-                      <Weather weatherResults={this.state.weatherResults} />
-                    )}
-                  </div>
-
-                  <div>
-                    <MDBBtn
-                      onClick={() => this.setState({ activeChoice: "movies" })}
-                      className="mainButton movieButton"
-                    >
-                      Load Movies
-                    </MDBBtn>
-                    {this.state.activeChoice === "movies" && (
-                      <Movies movieResults={this.state.movieResults} />
-                    )}
-                  </div>
-
-                  <div>
-                    <MDBBtn
-                      onClick={() => this.setState({ activeChoice: "yelp" })}
-                      className="mainButton yelpButton"
-                    >
-                      Load Yelp
-                    </MDBBtn>
-                    {this.state.activeChoice === "yelp" && (
-                      <Yelp yelpResults={this.state.yelpResults} />
-                    )}
-                  </div>
+                  <MDBContainer>
+                    <MDBRow>
+                      <MDBCol>
+                        <div>
+                          <MDBBtn
+                            onClick={() =>
+                              this.setState({ activeChoice: "weather" })
+                            }
+                            className="mainButton weatherButton"
+                          >
+                            Load Weather
+                          </MDBBtn>
+                          {this.state.activeChoice === "weather" && (
+                            <Weather
+                              weatherResults={this.state.weatherResults}
+                            />
+                          )}
+                        </div>
+                      </MDBCol>
+                      <MDBCol>
+                        <div>
+                          <MDBBtn
+                            onClick={() =>
+                              this.setState({ activeChoice: "movies" })
+                            }
+                            className="mainButton movieButton"
+                          >
+                            Load Movies
+                          </MDBBtn>
+                          {this.state.activeChoice === "movies" && (
+                            <Movies movieResults={this.state.movieResults} />
+                          )}
+                        </div>
+                      </MDBCol>
+                      <MDBCol>
+                        <div>
+                          <MDBBtn
+                            onClick={() =>
+                              this.setState({ activeChoice: "yelp" })
+                            }
+                            className="mainButton yelpButton"
+                          >
+                            Load Yelp
+                          </MDBBtn>
+                          {this.state.activeChoice === "yelp" && (
+                            <Yelp yelpResults={this.state.yelpResults} />
+                          )}
+                        </div>
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBContainer>
                 </>
               )}
             </MDBCardBody>
